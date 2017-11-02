@@ -25,3 +25,8 @@ This code snippet can do that:
   }
 ```
 
+For usage in maven, it's necessary to add
+* junit-jupiter-engine to execute tests by maven
+* junit-platform-surefire-provider to provide testing environment
+
+For more information, see pom.xml.
