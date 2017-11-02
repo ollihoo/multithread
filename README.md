@@ -46,12 +46,12 @@ To stop it, do
 
     docker-jenkins.sh stop
     
-Jenkins is then available under http://localhost:9000. For the real first time, you will
-have to do several more steps:
+Jenkins is then available under http://localhost:9000. 
+
+### First Time
+There are some steps to do:
 * go to jenkins_home/secrets/initialAdminPassword and copy initial password.
 * install all suggested plugins
 * create Admin account
+* install pipeline project with adding this project to Jenkins (see: https://jenkins.io/doc/book/pipeline/getting-started/)
 
-
-https://jenkins.io/doc/book/pipeline/getting-started/
-    
