@@ -1,13 +1,11 @@
-pipeline {
-    agent any
-    stages {
-        stage('Clone sources') {
-            git url: 'https://github.com/ollihoo/multithread.git'
-        }
-        stage('Build') {
-            steps {
-               echo 'This is a minimal pipeline.'
-            }
-        }
-    }
+node {
+   stage('Check out git repository') {
+      git 'https://github.com/ollihoo/multithread.git'
+   }
+   stage('Build and package Spritn Boot application') {
+      sh "./mvnw package"
+   }
+   stage('Results') {
+      junit '**/target/surefire-reports/TEST-*.xml'
+   }
 }

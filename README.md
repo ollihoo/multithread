@@ -31,6 +31,12 @@ For usage in maven, it's necessary to add
 
 For more information, see [pom.xml](pom.xml).
 
+## Maven Wrapper
+
+See https://howtoprogram.xyz/2016/09/11/maven-wrapper-example/
+
+Instead of using mvn, simply use ./mvnw 
+
 ## Jenkins
 
 This project offers a script that creates a jenkins docker for you. This is the script
