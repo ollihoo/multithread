@@ -59,7 +59,12 @@ There are some steps to do:
 * go to jenkins_home/secrets/initialAdminPassword and copy initial password.
 * install all suggested plugins
 * create Admin account
-* install pipeline project with adding this project to Jenkins (see: https://jenkins.io/doc/book/pipeline/getting-started/)
+* install pipeline project by adding this project to Jenkins:
+    * see: https://jenkins.io/doc/book/pipeline/getting-started/
+    * create new project - type is 'pipeline'; name: "Build multithread project"
+    * select pipeline by SCM
+    * add URL to this project (https://github.com/ollihoo/multithread.git)
+    * execute pipeline
 
 ### Pipeline Syntax
 
