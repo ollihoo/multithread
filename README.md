@@ -30,3 +30,28 @@ For usage in maven, it's necessary to add
 * junit-platform-surefire-provider to provide testing environment
 
 For more information, see [pom.xml](pom.xml).
+
+## Jenkins
+
+This project offers a script that creates a jenkins docker for you. This is the script
+
+    docker-jenkins.sh
+    
+To use this, it's necessary to already have installed docker on your PC. To start your
+local jenkins, do
+
+    docker-jenkins.sh start
+    
+To stop it, do
+
+    docker-jenkins.sh stop
+    
+Jenkins is then available under http://localhost:9000. For the real first time, you will
+have to do several more steps:
+* go to jenkins_home/secrets/initialAdminPassword and copy initial password.
+* install all suggested plugins
+* create Admin account
+
+
+https://jenkins.io/doc/book/pipeline/getting-started/
+    
