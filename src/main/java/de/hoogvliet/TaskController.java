@@ -5,14 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class TaskController {
 
   @Autowired
   private TaskService taskService;
 
-  @RequestMapping(name="/task", method = RequestMethod.GET)
-  public String executeTask() {
-    return taskService.getJoke();
+  @RequestMapping(name = "/task", method = RequestMethod.GET)
+  public Map<String, Object> executeTask() {
+    Map<String, Object> response = new HashMap<>();
+    response.put("joke", taskService.getJoke());
+    response.put("jeopardy", taskService.getJeopardyQuestion());
+    return response;
   }
 }
