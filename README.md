@@ -55,3 +55,6 @@ There are some steps to do:
 * create Admin account
 * install pipeline project with adding this project to Jenkins (see: https://jenkins.io/doc/book/pipeline/getting-started/)
 
+### Pipeline Syntax
+
+https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline
