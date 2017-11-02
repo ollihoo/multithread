@@ -1,4 +1,4 @@
-package de.hoogvliet;
+package de.hoogvliet.jokes;
 
 import lombok.Data;
 

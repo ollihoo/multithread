@@ -1,4 +1,4 @@
-package de.hoogvliet;
+package de.hoogvliet.task;
 
 import de.hoogvliet.jeopardy.JeopardyService;
 import de.hoogvliet.jokes.JokeService;

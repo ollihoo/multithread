@@ -1,8 +1,12 @@
-package de.hoogvliet;
+package de.hoogvliet.task;
 
 
+import de.hoogvliet.RestTemplateProvider;
+import de.hoogvliet.jeopardy.Jeopardy;
 import de.hoogvliet.jeopardy.JeopardyService;
+import de.hoogvliet.jokes.Joke;
 import de.hoogvliet.jokes.JokeService;
+import de.hoogvliet.task.TaskService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

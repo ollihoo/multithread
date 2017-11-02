@@ -1,6 +1,5 @@
 package de.hoogvliet.jokes;
 
-import de.hoogvliet.Joke;
 import de.hoogvliet.RestTemplateProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

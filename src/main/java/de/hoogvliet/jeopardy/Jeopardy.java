@@ -1,4 +1,4 @@
-package de.hoogvliet;
+package de.hoogvliet.jeopardy;
 
 import lombok.Data;
 

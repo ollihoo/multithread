@@ -1,6 +1,5 @@
 package de.hoogvliet.jeopardy;
 
-import de.hoogvliet.Jeopardy;
 import de.hoogvliet.RestTemplateProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
