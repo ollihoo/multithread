@@ -16,9 +16,6 @@ public class TaskController {
 
   @RequestMapping(name = "/task", method = RequestMethod.GET)
   public Map<String, Object> executeTask() {
-    Map<String, Object> response = new HashMap<>();
-    response.put("joke", taskService.getJoke());
-    response.put("jeopardy", taskService.getJeopardyQuestion());
-    return response;
+    return taskService.doTask();
   }
 }

@@ -23,12 +23,4 @@ public class TaskService {
     return response;
   }
 
-  public Joke getJoke() {
-    return jokeService.getJoke();
-  }
-
-  public Jeopardy getJeopardyQuestion() {
-    return jeopardyService.getQuestion();
-  }
-
 }

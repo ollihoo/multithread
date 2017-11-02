@@ -62,18 +62,4 @@ class TaskServiceTest {
     assertEquals(ANY_JOKE, actualResponse.get("joke"));
   }
 
-  @Test
-  public void getJokeUsesJokeService() {
-    when(jokeService.getJoke()).thenReturn(ANY_JOKE);
-    taskService.getJoke();
-    verify(jokeService).getJoke();
-  }
-
-  @Test
-  public void getJokeReturnsJoke() {
-    when(jokeService.getJoke()).thenReturn(ANY_JOKE);
-    Joke actualJoke = taskService.getJoke();
-    assertEquals(ANY_JOKE, actualJoke);
-  }
-
 }
