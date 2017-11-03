@@ -1,10 +1,24 @@
 # Metrics
-One of the main reason to implement this project is metrics measurement.
+
+## Overview
 This project uses actuator package by Spring Boot to do measurement.
+The goal is to show metrics in a grafana board.
 
-Reference: https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready.html
+The way from Spring Boot to grafana is this one:
+* use Spring Boot actuator; it offers a jolokia interface that is used
+* use Telegraf to collect data via Jolokia; data is written to InfluxDB
+* grafana uses InfluxDB as data source to show dashboards
 
-## TICK stack
+
+For demonstration issues, I want to get this environment completely on
+one laptop. This makes it a little bit more complicated:
+* I use IntelliJ as IDE; this is the place I start Spring Boot application
+* I use telegraph.exe with the local telegraf.conf (see below)
+* I use vagrant to set up a centos environment; it contains influxDB and
+  grafana (see [Vagrantfile](../Vagrantfile)
+
+
+## Background: TICK stack
 Influxdata is a company with a stack of tools to get, save and display metrics.
 This environment is called TICK stack:
 * Telegraf: collect and report metrics and events to InfluxDB
@@ -19,8 +33,6 @@ For my issue I want to use InfluxDB and Telegraf.
 ## InfluxDB
 This topic needs more documentation. See [influxdb.md](influxdb.md)
 
-For the first time, you need to set up a database.
-
 ## Telegraf
 Telegraf ist the collector of metrics. In my configuration, I use the
 jolokia interface to get data. This means that Spring Boot offers this URL:
@@ -30,7 +42,7 @@ jolokia interface to get data. This means that Spring Boot offers this URL:
 Telegraf has a plugin for this interface. The configuration for this
 environment can be found here: [telegraf/telegraf.conf](../telegraf/telegraf.conf)
 
-When influxD runs, start telegraf, i.e.
+Start telegraf, i.e.
 
     cd telegraf
     ./telegraf -config telegraf.conf
@@ -42,6 +54,7 @@ You can easily check if this works by checking the influxDB. See
 
 ### Overview
 * https://stackoverflow.com/questions/32656246/exposing-spring-boot-metrics-to-influxdb-for-grafana-visualization
+* https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready.html
 
 ### Telegraf
 * [How to configure Telegraf - ext: stackoverflow](https://stackoverflow.com/questions/32656246/exposing-spring-boot-metrics-to-influxdb-for-grafana-visualization)

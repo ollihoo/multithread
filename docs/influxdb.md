@@ -8,14 +8,18 @@
 
     docker pull influxdb
 
+### RPM
+
+See [Vagrantfile](../Vagrantfile) for more information.
+
 ### Windows:
 
     wget https://dl.influxdata.com/influxdb/releases/influxdb-1.3.7_windows_amd64.zip
     unzip influxdb-1.3.7_windows_amd64.zip
 
+### First Steps
 Start influxd.exe; under Windows you will see a cmd window with log file.
 
-### First Steps
 * Use CLI via influx.exe or similar
 * CREATE DATABASE multithreading
 * SHOW DATBASES // check if multithreading has been created
