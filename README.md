@@ -4,6 +4,14 @@
 This project is used to execute several services and to measure the
 speed of these calls. It is also used to test with jUnit5.
 
+## Metrics
+This project uses actuator package by Spring Boot to do measurement.
+
+Reference: https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready.html
+
+### InfluxDB
+This topic needs more documentation. See [docs/influxdb.md](docs/influxdb.md)
+
 ## Test Environment
 
 ### JUnit 5 and Mockito
