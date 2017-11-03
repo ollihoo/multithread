@@ -7,6 +7,12 @@ speed of these calls. It is also used to test with jUnit5.
 Metrics is the main topic of this project. It's alos complex. See
 this page for more information: [docs/metrics.md](docs/metrics.md).
 
+When running application, there should be this interface available:
+
+    http://localhost:8080/jolokia
+
+Start InfluxDB and Telegraf to get metrics.
+
 ## Test Environment
 In this project I evaluate JUnit5 plus Mockito.
 You'll find more information here: [docs/junit5.md](docs/junit5.md).

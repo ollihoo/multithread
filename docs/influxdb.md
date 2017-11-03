@@ -47,3 +47,24 @@ To get data:
     SELECT "host", "region", "value" FROM "cpu"
 
 Further information: see link above.
+
+## See measurements
+
+    > show measurements
+    name: measurements
+    name
+    ----
+    cpu
+    jolokia
+    mem
+
+## See values of the multithreading applications
+
+Use the influxDB CLI
+
+    use multithreading
+    select * from jolokia
+    select multithreading_threads from jolokia;
+
+# References
+* https://portal.influxdata.com/downloads
