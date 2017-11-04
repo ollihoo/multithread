@@ -1,4 +1,4 @@
-package de.hoogvliet.system;
+package de.hoogvliet.integrationtests;
 
 import de.hoogvliet.IntegrationTest;
 import org.json.simple.parser.JSONParser;
