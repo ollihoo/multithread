@@ -1,4 +1,14 @@
 # jUnit 5 and Mockito
+
+## Notice
+
+Just writing unit tests is quite easy with junit5. But with integrational
+tests, i gets more and more complicated. That'S why I decided to give up
+with junit5 and to skip back to junit4. Please read earlier versions of
+this document to see what I found out so far.
+
+## Introduction
+
 Most developers are used to integrate @Mock and @InjectMocks annotations
 to easily set up their testing environment. For jUnit5, this can't be used
 anymore.
@@ -20,5 +30,3 @@ This code snippet can do that:
 For usage in maven, it's necessary to add
 * junit-jupiter-engine to execute tests by maven
 * junit-platform-surefire-provider to provide testing environment
-
-For more information, see [pom.xml](../pom.xml).

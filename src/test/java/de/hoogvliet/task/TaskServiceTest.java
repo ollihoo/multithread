@@ -1,34 +1,27 @@
 package de.hoogvliet.task;
 
-
 import de.hoogvliet.RestTemplateProvider;
 import de.hoogvliet.jeopardy.Jeopardy;
 import de.hoogvliet.jeopardy.JeopardyService;
 import de.hoogvliet.jokes.Joke;
 import de.hoogvliet.jokes.JokeService;
-import de.hoogvliet.task.TaskService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class TaskServiceTest {
+@RunWith(MockitoJUnitRunner.class)
+public class TaskServiceTest {
   private static final Joke ANY_JOKE = new Joke();
   private static final Jeopardy ANY_JEOPARDY = new Jeopardy();
-
-  @Mock
-  private RestTemplateProvider restTemplateProvider;
-
-  @Mock
-  private RestTemplate restTemplate;
 
   @Mock
   private JokeService jokeService;
@@ -39,11 +32,6 @@ class TaskServiceTest {
 
   @InjectMocks
   private TaskService taskService;
-
-  @BeforeEach
-  public void setup() {
-    MockitoAnnotations.initMocks(this);
-  }
 
   @Test
   public void doTaskUsesJokeService() {

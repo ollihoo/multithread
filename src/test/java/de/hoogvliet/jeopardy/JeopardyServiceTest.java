@@ -1,62 +1,65 @@
 package de.hoogvliet.jeopardy;
 
 import de.hoogvliet.RestTemplateProvider;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class JeopardyServiceTest {
-  private static final Jeopardy ANY_JEOPARDY = new Jeopardy();
-  private static final Jeopardy[] ANY_JEOPARDIES = { ANY_JEOPARDY };
+@RunWith(MockitoJUnitRunner.class)
+public class JeopardyServiceTest {
+    private static final Jeopardy ANY_JEOPARDY = new Jeopardy();
+    private static final Jeopardy[] ANY_JEOPARDIES = {ANY_JEOPARDY};
 
-  @Mock
-  private RestTemplateProvider restTemplateProvider;
+    @Mock
+    private RestTemplateProvider restTemplateProvider;
 
-  @Mock
-  private RestTemplate restTemplate;
+    @Mock
+    private RestTemplate restTemplate;
 
-  @InjectMocks
-  private JeopardyService jeopardyService;
+    @InjectMocks
+    private JeopardyService jeopardyService;
 
-  @BeforeEach
-  public void setup() {
-    MockitoAnnotations.initMocks(this);
-  }
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
 
-  @Test
-  public void getQuestionUsesRestTemplateProvider() {
-    when(restTemplateProvider.getRestTemplate()).thenReturn(restTemplate);
-    when(restTemplate.getForObject(anyString(), any())).thenReturn(ANY_JEOPARDIES);
+    @Test
+    public void getQuestionUsesRestTemplateProvider() {
+        when(restTemplateProvider.getRestTemplate()).thenReturn(restTemplate);
+        when(restTemplate.getForObject(anyString(), any())).thenReturn(ANY_JEOPARDIES);
 
-    jeopardyService.getQuestion();
-    verify(restTemplateProvider).getRestTemplate();
-  }
+        jeopardyService.getQuestion();
+        verify(restTemplateProvider).getRestTemplate();
+    }
 
-  @Test
-  public void getQuestionUsesJeopardyAPI() {
-    when(restTemplateProvider.getRestTemplate()).thenReturn(restTemplate);
-    when(restTemplate.getForObject(anyString(), any())).thenReturn(ANY_JEOPARDIES);
+    @Test
+    public void getQuestionUsesJeopardyAPI() {
+        when(restTemplateProvider.getRestTemplate()).thenReturn(restTemplate);
+        when(restTemplate.getForObject(anyString(), any())).thenReturn(ANY_JEOPARDIES);
 
-    jeopardyService.getQuestion();
-    verify(restTemplate).getForObject("http://jservice.io/api/random", Jeopardy[].class);
-  }
+        jeopardyService.getQuestion();
+        verify(restTemplate).getForObject("http://jservice.io/api/random", Jeopardy[].class);
+    }
 
-  @Test
-  public void getQuestionReturnsOneJeopardy() {
-    when(restTemplateProvider.getRestTemplate()).thenReturn(restTemplate);
-    when(restTemplate.getForObject(anyString(), any())).thenReturn(ANY_JEOPARDIES);
-    Jeopardy actualJeopardy = jeopardyService.getQuestion();
-    assertEquals(ANY_JEOPARDY, actualJeopardy);
-  }
+    @Test
+    public void getQuestionReturnsOneJeopardy() {
+        when(restTemplateProvider.getRestTemplate()).thenReturn(restTemplate);
+        when(restTemplate.getForObject(anyString(), any())).thenReturn(ANY_JEOPARDIES);
+        Jeopardy actualJeopardy = jeopardyService.getQuestion();
+        assertEquals(ANY_JEOPARDY, actualJeopardy);
+    }
 
 
 }
