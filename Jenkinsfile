@@ -6,6 +6,6 @@ node {
       sh "./mvnw verify"
    }
    stage('Results') {
-      junit '**/target/surefire-reports/TEST-*.xml'
+      junit '**/target/*-reports/TEST-*.xml'
    }
 }
