@@ -1,11 +1,28 @@
 # Metrics
 
-## Overview
+## Getting started
 Go to directory monitoring. To use this, you will need vagrant.
 
 Do
  
     vagrant up
+
+This installs grafana and influxdb on a virtual machine. These are the urls:
+
+    for grafana: http://localhost:3000
+    for influxdb: http://localhost:8086
+    
+This setup need telegraf to transport metrics. Telegraf needs to be locally installed.
+Follow this installation: https://portal.influxdata.com/downloads
+
+After done, do these steps:
+
+    cd monitoring/telegraf
+    telegraf --config telegraf.conf
+    
+This installation now gets data from localhost:8080/jolokia and transfers
+metrics to localhost:8086 which is the influxdb.
+
 
 
 ## Technical Overview
@@ -47,7 +64,7 @@ jolokia interface to get data. This means that Spring Boot offers this URL:
     http://localhost:8080/jolokia
 
 Telegraf has a plugin for this interface. The configuration for this
-environment can be found here: [telegraf/telegraf.conf](../telegraf/telegraf.conf)
+environment can be found here: [telegraf/telegraf.conf](../monitoring/telegraf/telegraf.conf)
 
 Start telegraf, i.e.
 
