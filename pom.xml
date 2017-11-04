@@ -64,6 +64,7 @@
     <build>
         <plugins>
             <plugin>
+                <!-- unit tests  -->
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
@@ -71,6 +72,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!-- integration tests  -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.20.1</version>
@@ -79,6 +81,9 @@
                         <include>**/integrationtests/**.java</include>
                     </includes>
                     <groups>de.hoogvliet.IntegrationTest</groups>
+                    <systemPropertyVariables>
+                        <test.server.port>${tomcat.http.port}</test.server.port>
+                    </systemPropertyVariables>
                 </configuration>
                 <executions>
                     <execution>
@@ -90,21 +95,50 @@
                 </executions>
             </plugin>
             <plugin>
+                <!-- for integration tests: start spring boot application -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.5.8.RELEASE</version>
+                <configuration>
+                    <profiles>
+                        <profile>integrationtests</profile>
+                    </profiles>
+                </configuration>
                 <executions>
                     <execution>
                         <id>pre-integration-test</id>
                         <goals>
                             <goal>start</goal>
                         </goals>
+                        <configuration>
+                            <arguments>
+                                <argument>--server.port=${tomcat.http.port}</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>post-integration-test</id>
                         <goals>
                             <goal>stop</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- integration tests: used to get random port for application -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>reserve-tomcat-port</id>
+                        <goals>
+                            <goal>reserve-network-port</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <portNames>
+                                <portName>tomcat.http.port</portName>
+                            </portNames>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

@@ -6,13 +6,14 @@ JUnit 4 offers the annotation @Category(...). I split up tests in
 * integration tests
 
 
-# Maven
+## Maven
 Maven offers different plugins for these test stages:
-* unit tests - Surefire plugin
-* integration test - Failsafe plugin
+* unit tests - maven-surefire-plugin
+* integration test - maven-failsafe-plugin
+    * start application - spring-boot-maven-plugin
+    * transfer random application port - build-helper-maven-plugin
 
-
-# Unit Tests
+## Unit Tests
 These tests don't get any @Category annotation (see below). There is no special
 configuration needed in the classes. in pom.xml there is an exclusion of
 IntegrationTest category in the Surefire plugin:
@@ -28,7 +29,7 @@ IntegrationTest category in the Surefire plugin:
 This excludes all marked tests from ```mvn test```.
 
 
-#Integration Tests
+## Integration Tests
 To mark integration tests, I create this interface IntegrationTest. By annotating
 tests with
 
@@ -57,7 +58,14 @@ During development, tests need to be implemented against the running local insta
 tests in Jenkins, it's necessary to start another local instance by maven.
 
 This is done via spring-boot-maven-plugin. It integrates to the failsafe plugin stages
-'pre-integration-test' and 'post-integration-test'.
+'pre-integration-test' and 'post-integration-test'. Since port 8080 is often used,
+it's recommended to use random ports. This can be done by build-helper-maven-plugin
+
+For local testing, it's necessary to get the port from system environment. Thsis is
+the snippet:
+
+    private String applicationPort = System.getProperty("test.server.port", "8080");
+
 
 See [pom.xml](../pom.xml) for more details.
 
