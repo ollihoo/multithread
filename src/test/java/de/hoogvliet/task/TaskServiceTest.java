@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -55,6 +56,12 @@ public class TaskServiceTest {
     Map<String, Object> actualResponse = taskService.doTask();
     assertEquals(ANY_JEOPARDY, actualResponse.get("jeopardy"));
     assertEquals(ANY_JOKE, actualResponse.get("joke"));
+  }
+
+  @Test
+  public void ensureThatDemonstrationMetricIsWritten() {
+    taskService.doTask();
+    verify(gaugeService).submit(eq("de.hoogvliet.task.doTask.duration"), anyDouble());
   }
 
 }
