@@ -3,7 +3,7 @@ node {
       git 'https://github.com/ollihoo/multithread.git'
    }
    stage('Build and package Spritn Boot application') {
-      sh "./mvnw package"
+      sh "./mvnw verify"
    }
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'

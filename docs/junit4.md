@@ -34,10 +34,34 @@ tests with
 
     @Category(IntegrationTest.class)
 
-To get these tests separated from unit tests, I added a package called 'integrationtests'.
-To integrate all tests, I have to configure failsafe plugin:
+it's possible to separate them from unit tests. 
+I also added a package called 'integrationtests'. To get them executed, there is another
+command ```mvn verify```. This is done by this configuration:
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/integrationtests/**.java</include>
+                    </includes>
+                    <groups>de.hoogvliet.IntegrationTest</groups>
+                </configuration>
+                <executions> 
+                    ...
+                </executions>
+            </plugin>
+
+As a concept, integration tests should not start Spring Boot application themselves. 
+During development, tests need to be implemented against the running local instance. For
+tests in Jenkins, it's necessary to start another local instance by maven.
+
+This is done via spring-boot-maven-plugin. It integrates to the failsafe plugin stages
+'pre-integration-test' and 'post-integration-test'.
+
+See [pom.xml](../pom.xml) for more details.
 
 
-
-Reference: http://maven.apache.org/surefire/maven-failsafe-plugin/examples/inclusion-exclusion.html
-
+# References
+* http://maven.apache.org/surefire/maven-failsafe-plugin/examples/inclusion-exclusion.html
+* https://docs.spring.io/spring-boot/docs/current/maven-plugin/usage.html
