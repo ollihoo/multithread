@@ -8,8 +8,9 @@ Metrics is the main topic of this project. See
 this page for more information: [docs/metrics.md](docs/metrics.md).
 
 ## Test Environment
-In this project I evaluate JUnit5 plus Mockito.
-You'll find more information here: [docs/junit5.md](docs/junit5.md).
+In this project I evaluated JUnit5 plus Mockito. Summary: it was a bad idea (see: [docs/junit5.md](docs/junit5.md)).
+
+To work with junit4, see [docs/junit4.md](docs/junit4.md).
 
 ## Maven Wrapper
 See https://howtoprogram.xyz/2016/09/11/maven-wrapper-example/
