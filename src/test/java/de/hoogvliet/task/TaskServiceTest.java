@@ -1,6 +1,5 @@
 package de.hoogvliet.task;
 
-import de.hoogvliet.RestTemplateProvider;
 import de.hoogvliet.jeopardy.Jeopardy;
 import de.hoogvliet.jeopardy.JeopardyService;
 import de.hoogvliet.jokes.Joke;
@@ -11,12 +10,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.actuate.metrics.GaugeService;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
