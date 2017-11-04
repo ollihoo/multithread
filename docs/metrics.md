@@ -23,7 +23,20 @@ After done, do these steps:
 This installation now gets data from localhost:8080/jolokia and transfers
 metrics to localhost:8086 which is the influxdb.
 
+To get a first dashboard, there are a view things to do:
 
+    * browse to http://localhost:3000
+    * log in as admin/admin
+    * go to menu datasources
+        * http setting: http://localhost:8086
+        * Access: proxy
+        * Database: multithreading (previously set in telegraf.conf)
+        * Save it - it should connect to installed influxdb
+    * go to menu dahsboard and click "Import"
+    * import this file: [Multithreading_Dashboard.json](../monitoring/ansible/roles/grafana/files/Multithreading_Dashboard.json).
+
+When this step is done, there should be a Dashboard called "Multithreading Dashboard".    
+Note: perhaps this can also be automated. Don't know so far.
 
 ## Technical Overview
 This project uses actuator package by Spring Boot to do measurement.

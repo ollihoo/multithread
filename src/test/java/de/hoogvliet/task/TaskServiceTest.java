@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
@@ -29,6 +30,8 @@ public class TaskServiceTest {
   @Mock
   private JeopardyService jeopardyService;
 
+  @Mock
+  private GaugeService gaugeService;
 
   @InjectMocks
   private TaskService taskService;
