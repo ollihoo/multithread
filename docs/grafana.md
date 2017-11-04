@@ -3,7 +3,7 @@
 ## Installation:
 * in vagrant environment; install vagrant by HashiCorp
 * usage of centOS/7
-* installation via RPM; see also [Vagrantfile](../Vagrantfile)
+* installation via RPM; see also [Vagrantfile](../monitoring/Vagrantfile)
 
 ## Usage
 You can reach you local grafana installation via

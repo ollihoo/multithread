@@ -1,6 +1,14 @@
 # Metrics
 
 ## Overview
+Go to directory monitoring. To use this, you will need vagrant.
+
+Do
+ 
+    vagrant up
+
+
+## Technical Overview
 This project uses actuator package by Spring Boot to do measurement.
 The goal is to show metrics in a grafana board.
 
@@ -9,13 +17,12 @@ The way from Spring Boot to grafana is this one:
 * use Telegraf to collect data via Jolokia; data is written to InfluxDB
 * grafana uses InfluxDB as data source to show dashboards
 
-
 For demonstration issues, I want to get this environment completely on
 one laptop. This makes it a little bit more complicated:
 * I use IntelliJ as IDE; this is the place I start Spring Boot application
 * I use telegraph.exe with the local telegraf.conf (see below)
 * I use vagrant to set up a centos environment; it contains influxDB and
-  grafana (see [Vagrantfile](../Vagrantfile)
+  grafana (see [Vagrantfile](../monitoring/Vagrantfile)
 
 
 ## Background: TICK stack

@@ -10,7 +10,7 @@
 
 ### RPM
 
-See [Vagrantfile](../Vagrantfile) for more information.
+See [Vagrantfile](../monitoring/Vagrantfile) for more information.
 
 ### Windows:
 
