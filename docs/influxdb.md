@@ -70,5 +70,9 @@ Use the influxDB CLI
     select * from jolokia
     select multithreading_threads from jolokia;
 
+## See field of a table
+
+    show field keys
+
 # References
 * https://portal.influxdata.com/downloads

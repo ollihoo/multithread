@@ -58,9 +58,11 @@ public class TaskServiceTest {
   }
 
   @Test
-  public void ensureThatDemonstrationMetricIsWritten() {
+  public void ensureThatDemonstrationMetricsAreWritten() {
     taskService.doTask();
-    verify(gaugeService).submit(eq("de.hoogvliet.task.doTask.duration"), anyDouble());
+    verify(gaugeService).submit(eq("doTask.summaryduration"), anyDouble());
+    verify(gaugeService).submit(eq("doTask.jokeduration"), anyDouble());
+    verify(gaugeService).submit(eq("doTask.jeopardyduration"), anyDouble());
   }
 
 }

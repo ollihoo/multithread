@@ -24,9 +24,18 @@ public class TaskService {
     long start = System.currentTimeMillis();
     Map<String, Object> response = new HashMap<>();
     response.put("joke", jokeService.getJoke());
+    long jokeFinished = System.currentTimeMillis();
     response.put("jeopardy", jeopardyService.getQuestion());
-    long duration = System.currentTimeMillis() - start;
-    gaugeService.submit("de.hoogvliet.task.doTask.duration", duration);
+    long jeopardyFinished = System.currentTimeMillis();
+
+    long jokeDuration = jokeFinished - start;
+    long jeopardyDuration = jeopardyFinished - jokeFinished;
+    long summaryDuration = jeopardyFinished - start;
+
+    gaugeService.submit("doTask.jokeduration", jokeDuration);
+    gaugeService.submit("doTask.jeopardyduration", jeopardyDuration);
+    gaugeService.submit("doTask.summaryduration", summaryDuration);
+
     return response;
   }
 
