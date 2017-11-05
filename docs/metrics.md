@@ -1,5 +1,10 @@
 # Metrics
 
+The goal is to show metrics in a grafana board. This is an example how it could 
+look like:
+
+![Task Metrics](./example_metrics.png)
+
 ## Getting started
 Go to directory monitoring. To use this, you will need vagrant.
 
@@ -40,7 +45,6 @@ Note: perhaps this can also be automated. Don't know so far.
 
 ## Technical Overview
 This project uses actuator package by Spring Boot to do measurement.
-The goal is to show metrics in a grafana board.
 
 The way from Spring Boot to grafana is this one:
 * use Spring Boot actuator; it offers a jolokia interface that is used
