@@ -3,6 +3,7 @@ package de.hoogvliet.task;
 import de.hoogvliet.jeopardy.Jeopardy;
 import de.hoogvliet.jeopardy.JeopardyService;
 import de.hoogvliet.jokes.Joke;
+import de.hoogvliet.jokes.JokeException;
 import de.hoogvliet.jokes.JokeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,19 +38,19 @@ public class TaskServiceTest {
   private TaskService taskService;
 
   @Test
-  public void doTaskUsesJokeService() {
+  public void doTaskUsesJokeService() throws TaskServiceException, JokeException {
     taskService.doTask();
     verify(jokeService).getJoke();
   }
 
   @Test
-  public void doTaskUsesJeopardyService() {
+  public void doTaskUsesJeopardyService() throws JokeException, TaskServiceException {
     taskService.doTask();
     verify(jeopardyService).getQuestion();
   }
 
   @Test
-  public void doTaskReturnsMapWithTwoServiceResponses() {
+  public void doTaskReturnsMapWithTwoServiceResponses() throws JokeException, TaskServiceException {
     when(jokeService.getJoke()).thenReturn(ANY_JOKE);
     when(jeopardyService.getQuestion()).thenReturn(ANY_JEOPARDY);
     Map<String, Object> actualResponse = taskService.doTask();
@@ -58,11 +59,17 @@ public class TaskServiceTest {
   }
 
   @Test
-  public void ensureThatDemonstrationMetricsAreWritten() {
+  public void ensureThatDemonstrationMetricsAreWritten() throws TaskServiceException {
     taskService.doTask();
     verify(gaugeService).submit(eq("doTask.summaryduration"), anyDouble());
     verify(gaugeService).submit(eq("doTask.jokeduration"), anyDouble());
     verify(gaugeService).submit(eq("doTask.jeopardyduration"), anyDouble());
+  }
+
+  @Test(expected = TaskServiceException.class)
+  public void whenJokeCantBeExecutedATaskServiceExceptionIsThrown () throws JokeException, TaskServiceException {
+    when(jokeService.getJoke()).thenThrow(new JokeException("missing joke"));
+    taskService.doTask();
   }
 
 }
