@@ -1,0 +1,1 @@
+This directory contains all persisted data for influxdb

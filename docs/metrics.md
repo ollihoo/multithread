@@ -83,7 +83,7 @@ jolokia interface to get data. This means that Spring Boot offers this URL:
     http://localhost:8080/jolokia
 
 Telegraf has a plugin for this interface. The configuration for this
-environment can be found here: [telegraf/telegraf.conf](../monitoring/telegraf/telegraf.conf)
+environment can be found here: [telegraf/telegraf.conf](../telegraf/telegraf.conf)
 
 Start telegraf, i.e.
 
