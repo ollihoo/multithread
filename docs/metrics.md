@@ -40,7 +40,7 @@ To get a first dashboard, there are a view things to do:
     * go to menu dahsboard and click "Import"
     * import this file: Multithreading_Dashboard.json
      
-This is the link to the document: [Multithreading_Dashboard.json](../monitoring/ansible/roles/grafana/files/Multithreading_Dashboard.json).
+This is the link to the document: [Multithreading_Dashboard.json](../grafana/Multithreading_Dashboard.json).
 
 When this step is done, there should be a Dashboard called "Multithreading Dashboard".    
 Note: perhaps this can also be automated. Don't know so far.
