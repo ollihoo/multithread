@@ -1,5 +1,15 @@
 version: '3'
 services:
+  multithreading:
+    build: .
+    container_name: "multithreading"
+    depends_on:
+     -  telegraf
+    ports:
+     - "8080:8080"
+    volumes:
+     - "./localhost:/config:ro"
+
   influxdb:
     image: "influxdb"
     container_name: "influxdb"
