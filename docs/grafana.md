@@ -1,9 +1,12 @@
 # Grafana
 
 ## Installation:
-* in vagrant environment; install vagrant by HashiCorp
-* usage of centOS/7
-* installation via RPM; see also [Vagrantfile](../monitoring/Vagrantfile)
+In this project, there is a docker-compose file that does the proper
+setup. Simply do 
+
+    docker-compose up
+    
+on the root directory. This also installs influxdb.
 
 ## Usage
 You can reach you local grafana installation via

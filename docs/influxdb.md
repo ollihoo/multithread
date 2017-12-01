@@ -7,6 +7,13 @@
 ### docker
 
     docker pull influxdb
+    
+In this project, there is a docker-compose file that does the proper
+setup. Simply do 
+
+    docker-compose up
+    
+on the root directory. This also starts grafana.
 
 ### RPM
 
