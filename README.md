@@ -3,6 +3,21 @@
 This project is used to execute several services and to measure the
 speed of these calls. It is also used to test with jUnit5.
 
+## Getting started
+In this project root directory, do 
+
+    ./mvnw package
+    docker-compose up
+    
+This compiles and start the application and all monitoring tools within docker
+components. You can then use the application itselve by browsing to this address:
+
+    http://localhost:8081/task 
+
+Attention: it's port 8081!! That's important because the monitoring setup only can
+see this docker application at the moment.
+
+
 ## Metrics
 Metrics is the main topic of this project. See
 this page for more information: [docs/metrics.md](docs/metrics.md).
