@@ -6,25 +6,15 @@ look like:
 ![Task Metrics](./example_metrics.png)
 
 ## Getting started
-Go to directory monitoring. To use this, you will need vagrant.
-
-Do
+When not done yet, do
  
-    vagrant up
+    docker-compose start
 
-This installs grafana and influxdb on a virtual machine. These are the urls:
+in the project root directory. These are the urls:
 
     for grafana: http://localhost:3000
     for influxdb: http://localhost:8086
-    
-This setup need telegraf to transport metrics. Telegraf needs to be locally installed.
-Follow this installation: https://portal.influxdata.com/downloads
-
-After done, do these steps:
-
-    cd monitoring/telegraf
-    telegraf --config telegraf.conf
-    
+        
 This installation now gets data from localhost:8080/jolokia and transfers
 metrics to localhost:8086 which is the influxdb.
 
@@ -56,10 +46,6 @@ The way from Spring Boot to grafana is this one:
 For demonstration issues, I want to get this environment completely on
 one laptop. This makes it a little bit more complicated:
 * I use IntelliJ as IDE; this is the place I start Spring Boot application
-* I use telegraph.exe with the local telegraf.conf (see below)
-* I use vagrant to set up a centos environment; it contains influxDB and
-  grafana (see [Vagrantfile](../monitoring/Vagrantfile)
-
 
 ## Background: TICK stack
 Influxdata is a company with a stack of tools to get, save and display metrics.
@@ -105,5 +91,3 @@ You can easily check if this works by checking the influxDB. See
 ### Jolokia
 * https://jolokia.org/
 * https://github.com/influxdata/telegraf
-
-

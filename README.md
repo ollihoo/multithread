@@ -22,6 +22,8 @@ see this docker application at the moment.
 Metrics is the main topic of this project. See
 this page for more information: [docs/metrics.md](docs/metrics.md).
 
+You can start monitoring via the docker-compose command you see above.
+
 ## Test Environment
 In this project I evaluated JUnit5 plus Mockito. Summary: it was a bad idea (see: [docs/junit5.md](docs/junit5.md)).
 
