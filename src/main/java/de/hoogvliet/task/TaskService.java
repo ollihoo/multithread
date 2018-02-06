@@ -18,7 +18,7 @@ public class TaskService {
     private final JeopardyService jeopardyService;
     private final GaugeService gaugeService;
 
-    public TaskService (JokeService jokeService, JeopardyService jeopardyService, GaugeService gaugeService) {
+    public TaskService(JokeService jokeService, JeopardyService jeopardyService, GaugeService gaugeService) {
         this.jokeService = jokeService;
         this.jeopardyService = jeopardyService;
         this.gaugeService = gaugeService;
@@ -28,20 +28,16 @@ public class TaskService {
     public Map<String, Object> doTask() throws TaskServiceException {
         CompletableFuture<Jeopardy> jeopardyFuture = new CompletableFuture<>();
         CompletableFuture<Joke> jokeFuture = new CompletableFuture<>();
-        ExecutorService executorService = Executors.newCachedThreadPool();
 
         long start = System.currentTimeMillis();
 
-        executorService.submit(() -> {
-            jeopardyFuture.complete(getJeopardyAndMeasureDuration());
-        });
-        executorService.submit(() -> {
-            try {
-                jokeFuture.complete(getJokeAndMeasureDuration());
-            } catch (TaskServiceException e) {
-                jokeFuture.cancel(false);
-            }
-        });
+
+        jeopardyFuture.complete(getJeopardyAndMeasureDuration());
+        try {
+            jokeFuture.complete(getJokeAndMeasureDuration());
+        } catch (TaskServiceException e) {
+            jokeFuture.cancel(false);
+        }
 
         try {
             Map<String, Object> response = new HashMap<>();
@@ -75,7 +71,6 @@ public class TaskService {
             throw new TaskServiceException("Joke could not be executed. Check connection and service");
         }
     }
-
 
 
 }

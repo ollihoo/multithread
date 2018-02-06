@@ -1,7 +1,7 @@
 version: '3'
 services:
   multithreading:
-    build: .
+    image: "ollihoo/multithreading:latest"
     container_name: "multithreading"
     depends_on:
      -  telegraf

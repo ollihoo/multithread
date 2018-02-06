@@ -17,7 +17,7 @@ public class TaskController {
     this.taskService = taskService;
   }
 
-  @RequestMapping(name = "/task", method = RequestMethod.GET)
+  @RequestMapping(value = "/task", method = RequestMethod.GET)
   public Map<String, Object> executeTask() throws TaskServiceException {
     return taskService.doTask();
   }
