@@ -1,6 +1,5 @@
 package de.hoogvliet;
 
-import de.hoogvliet.jokes.JokeException;
 import de.hoogvliet.task.TaskService;
 import de.hoogvliet.task.TaskServiceException;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ public class TaskController {
   }
 
   @RequestMapping(name = "/task", method = RequestMethod.GET)
-  public Map<String, Object> executeTask() throws JokeException, TaskServiceException {
+  public Map<String, Object> executeTask() throws TaskServiceException {
     return taskService.doTask();
   }
 }
