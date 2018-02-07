@@ -29,3 +29,8 @@ There are some steps to do:
 
 # Pipeline Syntax
 See https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline
+
+# Credentials
+
+Create new credentials (username, password) with ID "hub.docker.com"
+This ID is later used to push artifacts to the docker hub

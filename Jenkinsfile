@@ -1,4 +1,5 @@
 node {
+
    stage ('Read environment') {
     sh "env"
    }
@@ -12,7 +13,9 @@ node {
     sh "docker build -t ollihoo/multithreading:latest ."
    }
    stage('Push docker image') {
-    sh "docker login -u ollihoo -p $DOCKERHUBPW && docker push -t ollihoo/multithreading:latest"
+     withCredentials([usernamePassword(credentialsId: 'hub.docker.com', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        sh "docker login -u $USERNAME -p $PASSWORD && docker push -t $USERNAME/multithreading:latest"
+     }
    }
    stage('Results') {
       junit '**/target/*-reports/TEST-*.xml'
