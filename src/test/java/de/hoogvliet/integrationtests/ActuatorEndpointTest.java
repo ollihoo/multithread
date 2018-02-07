@@ -23,7 +23,7 @@ public class ActuatorEndpointTest {
 
     @BeforeClass
     public static void beforeAll() {
-        applicationPort = System.getProperty("test.server.port");
+        applicationPort = System.getProperty("tomcat.http.port");
         if (applicationPort == null || "".equals(applicationPort)) {
             applicationPort = "8080";
         }

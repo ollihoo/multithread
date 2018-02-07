@@ -16,6 +16,8 @@
     <properties>
         <java.version>1.8</java.version>
         <docker.image.prefix>ollihoo</docker.image.prefix>
+        <failsafeplugin.version>2.20.1</failsafeplugin.version>
+        <surefireplugin.version>2.20.1</surefireplugin.version>
     </properties>
 
     <dependencies>
@@ -67,7 +69,7 @@
             <plugin>
                 <!-- unit tests  -->
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${surefireplugin.version}</version>
                 <configuration>
                     <excludedGroups>de.hoogvliet.IntegrationTest</excludedGroups>
                 </configuration>
@@ -76,7 +78,7 @@
                 <!-- integration tests  -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.20.1</version>
+                <version>${failsafeplugin.version}</version>
                 <configuration>
                     <includes>
                         <include>**/integrationtests/**.java</include>
@@ -152,28 +154,28 @@
                     <tag>latest</tag>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.lazerycode.jmeter</groupId>
-                <artifactId>jmeter-maven-plugin</artifactId>
-                <version>2.6.0</version>
-                <executions>
-                    <!-- Run JMeter tests -->
-                    <execution>
-                        <id>jmeter-tests</id>
-                        <goals>
-                            <goal>jmeter</goal>
-                        </goals>
-                    </execution>
-                    <!-- Fail build on errors in test -->
-                    <execution>
-                        <id>jmeter-check-results</id>
-                        <goals>
-                            <goal>results</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
+
+    <profiles>
+        <profile>
+            <id>integrationtests</id>
+            <properties>
+                <skip.integration.tests>false</skip.integration.tests>
+                <skip.unit.tests>true</skip.unit.tests>
+            </properties>
+        </profile>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <skip.integration.tests>true</skip.integration.tests>
+                <skip.unit.tests>false</skip.unit.tests>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
