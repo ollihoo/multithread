@@ -14,7 +14,7 @@ node {
    }
    stage('Push docker image') {
      withCredentials([usernamePassword(credentialsId: 'hub.docker.com', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        sh "docker login -u $USERNAME -p $PASSWORD && docker push -t $USERNAME/multithreading:latest"
+        sh "docker login -u $USERNAME -p $PASSWORD && docker push $USERNAME/multithreading:latest"
      }
    }
    stage('Results') {
