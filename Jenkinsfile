@@ -6,7 +6,7 @@ node {
       sh "./mvnw package"
    }
    stage('Build docker image') {
-    sh "./mvnw dockerfile:build"
+    sh "docker build -t ollihoo/multithreading:latest ."
    }
    stage('Results') {
       junit '**/target/*-reports/TEST-*.xml'
