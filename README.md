@@ -44,4 +44,4 @@ This project offers a script that creates a jenkins docker for you. This is the 
 
     docker-jenkins.sh
     
-For more information, go to [docs/jenkins.md](docs/jenkins.md)
+For more information, go to [docs/jenkins.md](docs/jenkins.md). Do not forget to set up all required credentials!

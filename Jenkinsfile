@@ -1,8 +1,4 @@
 node {
-
-   stage ('Read environment') {
-    sh "env"
-   }
    stage('Check out git repository') {
       git 'https://github.com/ollihoo/multithread.git'
    }
@@ -14,7 +10,7 @@ node {
    }
    stage('Push docker image') {
      withCredentials([usernamePassword(credentialsId: 'hub.docker.com', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        sh "docker login -u $USERNAME -p $PASSWORD && docker push $USERNAME/multithreading:latest"
+        sh "docker login -u $USERNAME -p $PASSWORD && docker push $USERNAME/multithreading:latest && docker logout"
      }
    }
    stage('Results') {

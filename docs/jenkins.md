@@ -33,4 +33,7 @@ See https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline
 # Credentials
 
 Create new credentials (username, password) with ID "hub.docker.com"
-This ID is later used to push artifacts to the docker hub
+This ID is later used to push artifacts to the docker hub.
+
+https://wiki.jenkins.io/display/JENKINS/Credentials+Binding+Plugin
+
