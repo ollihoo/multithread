@@ -31,13 +31,18 @@ public class TaskService {
 
         long start = System.currentTimeMillis();
 
+        ExecutorService executorService = Executors.newCachedThreadPool();
 
-        jeopardyFuture.complete(getJeopardyAndMeasureDuration());
-        try {
-            jokeFuture.complete(getJokeAndMeasureDuration());
-        } catch (TaskServiceException e) {
-            jokeFuture.cancel(false);
-        }
+        executorService.submit(() -> {
+            jeopardyFuture.complete(getJeopardyAndMeasureDuration());
+        });
+        executorService.submit(() -> {
+            try {
+                jokeFuture.complete(getJokeAndMeasureDuration());
+            } catch (TaskServiceException e) {
+                jokeFuture.cancel(false);
+            }
+        });
 
         try {
             Map<String, Object> response = new HashMap<>();
