@@ -7,3 +7,13 @@
   apt:
     name: ansible
     state: latest
+
+- name: install docker-py
+  pip:
+    name: docker-py
+    state: latest
+
+- name: update system
+  apt:
+    update_cache: yes
+    upgrade: dist

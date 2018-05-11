@@ -2,7 +2,7 @@
 
 
 # Running docker in Jenkins docker container
-Since we wnat to automate building our artefacts, it's also necessary to automate building
+Since we want to automate building our artefacts, it's also necessary to automate building
 docker images. 
 
 When you remember this idea of linking docker exe and socket into docker container:
